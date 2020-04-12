@@ -13,6 +13,10 @@
         border-radius: 5px;
         color: #dfe6e9;
     }
+    img {
+        width: 75px;
+        border-radius: 10px;
+    }
 </style>
 
 <body>
@@ -27,8 +31,8 @@
                         <th>Nama</th>
                         <th>Ketegori</th>
                         <th>Stock</th>
-                        <th width="20%">Gambar</th>
-                        <th width="20%">Action</th>
+                        <th width="15%">Gambar</th>
+                        <th width="10%">Action</th>
                     </thead>
                     <tbody>
                         <?php
@@ -39,9 +43,12 @@
                             echo '<td>' . $d['id'] . '</td>';
                             echo '<td>' . $d['nama'] . '</td>';
                             echo '<td>' . $d['kategori'] . '</td>';
-                            echo '<td>' . $d['stock'] . '</td>';
-                            echo '<td>' . $d['gambar'] . '</td>';
-                            // echo '';
+                            if ($d['stock'] <= 5) {
+                                echo '<td class="red">' . $d['stock'] . '</td>';
+                            } else {
+                                echo '<td>' . $d['stock'] . '</td>';
+                            }
+                            echo '<td> <img src="' . $d['gambar'] . '"> </td>';
                             echo '</tr>';
                         }
                         ?>
