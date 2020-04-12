@@ -1,3 +1,16 @@
+<?php
+    include('lib/koneksi.php');
+    $result = $con->query('SELECT * FROM `foodstore`');
+
+    if (isset($_GET['info'])) {
+        $info = $_GET['info'];
+        if ($info == 'hapus') {
+            echo '<script> alert("Data berhasil terhapus"); </script>';
+            // echo 'berhasil dihapus';
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,23 +48,22 @@
                         <th width="10%">Action</th>
                     </thead>
                     <tbody>
-                        <?php
-                        include('lib/koneksi.php');
-                        $result = $con->query('SELECT * FROM `foodstore`');
-                        foreach ($result as $d) {
-                            echo '<tr>';
-                            echo '<td>' . $d['id'] . '</td>';
-                            echo '<td>' . $d['nama'] . '</td>';
-                            echo '<td>' . $d['kategori'] . '</td>';
-                            if ($d['stock'] <= 5) {
-                                echo '<td class="red">' . $d['stock'] . '</td>';
-                            } else {
-                                echo '<td>' . $d['stock'] . '</td>';
-                            }
-                            echo '<td> <img src="' . $d['gambar'] . '"> </td>';
-                            echo '</tr>';
-                        }
-                        ?>
+                        <?php foreach ($result as $d) :?>
+                            <tr>
+                                <td><?php echo $d['id'] ?></td>
+                                <td><?php echo $d['nama'] ?></td>
+                                <td><?php echo $d['kategori'] ?></td>
+                                <?php
+                                    if ($d['stock'] <= 5) {
+                                        echo '<td class="red">' . $d['stock'] . '</td>';
+                                    } else {
+                                        echo '<td>' . $d['stock'] . '</td>';
+                                    }
+                                ?>
+                                <td><?php echo "<img src='" . $d['gambar'] . "'>" ?></td>
+                                <td><a class="btn btn-danger" href="action/act_delete.php?id=<?php echo $d['id'] ?>">Delete</a></td>
+                            </tr>
+                        <?php endforeach; ?>
                         <tr>
                             <td><a class="btn btn-success" href="crud/create.php">Tambah</a></td>
                         </tr>

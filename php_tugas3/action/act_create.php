@@ -9,7 +9,6 @@
     // echo $result;
 
     if ($result== TRUE) {
-        echo "bisa disimpan";
         header("location: ../food.php");
     } else {
         echo "gagal";
