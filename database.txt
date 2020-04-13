@@ -1,0 +1,8 @@
+Nama Database : php_crud
+Nama Table : foodstore {
+- id <int(5) A.I.> (Primary)
+- nama <varchar(128)>
+- kategori <varchar(128)>
+- stock <int(20)>
+- gambar <text>
+}
