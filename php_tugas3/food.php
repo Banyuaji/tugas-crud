@@ -46,17 +46,17 @@ if (isset($_GET['info'])) {
                         <th>Ketegori</th>
                         <th>Stock</th>
                         <th width="15%">Gambar</th>
-                        <th width="10%">Action</th>
+                        <th width="20%">Action</th>
                     </thead>
                     <tbody>
                         <?php
-                            $i = 1;
-                            foreach ($result as $d) :
+                        $i = 1;
+                        foreach ($result as $d) :
                         ?>
                             <tr>
                                 <td>
                                     <?php
-                                        echo $i++;
+                                    echo $i++;
                                     ?>
                                 </td>
                                 <td><?php echo $d['nama'] ?></td>
@@ -69,7 +69,7 @@ if (isset($_GET['info'])) {
                                 }
                                 ?>
                                 <td><?php echo "<img src='" . $d['gambar'] . "'>" ?></td>
-                                <td><a class="btn btn-danger" href="action/act_delete.php?id=<?php echo $d['id'] ?>">Delete</a></td>
+                                <td><a class="btn btn-info" href="crud/edit.php?id=<?php echo $d['id'] ?>">Edit</a> | <a class="btn btn-danger" href="action/act_delete.php?id=<?php echo $d['id'] ?>">Delete</a></td>
                             </tr>
                         <?php endforeach; ?>
                         <tr>
